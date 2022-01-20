@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yuksalish &mdash; Leaders Academy</title>
+  <meta name="description" content="Yuksalish Leaders Academy">
+  <meta name="keywords"
+    content="Yuksalish, yuksalish leaders academy, yuksalish muhammadali eshonqulov, muhammadali eshonqulov, liderlar akademiyasi">
+
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles-merged.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+  <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+  <div class="probootstrap-search" id="probootstrap-search">
+    <a href="#" class="probootstrap-close js-probootstrap-close"><i class="icon-cross"></i></a>
+    <form action="#">
+      <input type="search" name="s" id="search" placeholder="Izlash">
+    </form>
+  </div>
+
+  <div class="probootstrap-page-wrapper">
+    <!-- Fixed navbar -->
+
+    <div class="probootstrap-header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-9 col-md-9 col-sm-9 probootstrap-top-quick-contact-info">
+            <span><i class="icon-phone2"></i>+998 71 200 01 90</span>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 probootstrap-top-social">
+            <ul>
+              <li><a href="https://www.youtube.com/c/YuksalishLeadersAcademy/"><i class="icon-youtube"></i></a></li>
+              <li><a href="https://www.instagram.com/Yuksalish_Leaders_Academy/"><i class="icon-instagram2"></i></a>
+              </li>
+              <li><a href="https://t.me/Yuksalish_Leaders_Academy"><i class="icon-telegram"></i></a></li>
+              <li><a href="#" class="probootstrap-search-icon js-probootstrap-search"><i class="icon-search"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-default probootstrap-navbar">
+      <div class="container">
+        <div class="navbar-header">
+          <div class="btn-more js-btn-more visible-xs">
+            <a href="#"><i class="icon-dots-three-vertical "></i></a>
+          </div>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"
+            aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'home' %}" title="Yuksalish">Yuksalish</a>
+        </div>
+
+        <div id="navbar-collapse" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'home' %}">Bosh sahifa</a></li>
+            <li><a href="{% url 'requirement' %}">Talablar</a></li>
+            <li><a href="{% url 'event' %}">Filiallar</a></li>
+            <li><a href="{% url 'news' %}">Yangiliklar</a></li>
+            <li><a href="{% url 'contact' %}">Murojaat qilish</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="probootstrap-section">
+        {% if searched %}
+            <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+                <h2>Natija</h2>
+                <p class="lead">{{ searched }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="service left-icon probootstrap-animate">
+                    <div class="icon"><i class="icon-info"></i></div>
+                    <div class="text">
+                        {% if blog_result %}
+                            {% for result in blog_result %}
+                                <h3>{{ result.title}}</h3>
+                                <p>{{ result.text }}</p>
+                            {% endfor %}
+                        {% elif event_result %}
+                          {% for result in event_result %}
+                            <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 probootstrap-animate"></div>
+                              <figure class="probootstrap-media"><img src="{{ result.image.url }}" alt="" class="img-responsive"></figure>
+                              <div class="probootstrap-text">
+                                <h3>{{ result.viloyat }}</h3>
+                                <p>{{ result.city }}, {{ result.address }}</p>
+                                <span class="probootstrap-date"><i class="icon-phone2"></i>{{ result.phone }}</span>
+                              </div>
+                            </a>
+                            </div>
+                          {% endfor %}
+                        {% else %}
+                          <h3>Natija topilmadi...</h3>
+                        {% endif %}
+                    </div>
+                </div>
+                </div>
+            </div>
+        {% else %}
+          <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center section-heading probootstrap-animate">
+                <h2>Natija</h2>
+                <p class="lead">{{ searched }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="service left-icon probootstrap-animate">
+                    <div class="icon"><i class="icon-info"></i></div>
+                    <div class="text">
+                        <h3>Biror ma'lumot izlashni unutdingiz!</h3>
+                    </div>
+                </div>
+                </div>
+            </div>
+        {% endif %}
+    </section>
+
+    <footer class="probootstrap-footer probootstrap-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="probootstrap-footer-widget">
+                <h3>Akademiya haqida</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro provident suscipit natus a cupiditate ab
+                  minus illum quaerat maxime inventore Ea consequatur consectetur hic provident dolor ab aliquam eveniet
+                  alias</p>
+                <h3>Ijtimoiy-Tarmoqlar</h3>
+                <ul class="probootstrap-footer-social">
+                  <li><a href="https://t.me/Yuksalish_Leaders_Academy"><i class="icon-telegram"></i></a></li>
+                  <li><a href="https://www.instagram.com/Yuksalish_Leaders_Academy/"><i class="icon-instagram"></i></a></li>
+                  <li><a href="https://www.youtube.com/c/YuksalishLeadersAcademy/"><i class="icon-youtube"></i></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3 col-md-push-1">
+              <div class="probootstrap-footer-widget">
+                <h3>Linklar</h3>
+                <ul>
+                  <li><a href="{% url 'home' %}">Bosh sahifa</a></li>
+                  <li><a href="{% url 'requirement' %}">Talablar</a></li>
+                  <li><a href="{% url 'event' %}">Filiallar</a></li>
+                  <li><a href="{% url 'news' %}">Yangiliklar</a></li>
+                  <li><a href="{% url 'contact' %}">Murojaat qilish</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="probootstrap-footer-widget">
+                <h3>Aloqa</h3>
+                <ul class="probootstrap-contact-info">
+                  <li><i class="icon-phone2"></i><span>+998 71 200 01 90</span></li>
+                </ul>
+              </div>
+            </div>
+  
+          </div>
+          <!-- END row -->
+  
+        </div>
+  
+        <div class="probootstrap-copyright">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4 probootstrap-back-to-top">
+                <p><a href="#" class="js-backtotop">Yuqoriga chiqish <i class="icon-arrow-long-up"></i></a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+  
+    </div>
+    <!-- END wrapper -->
+  
+  
+    <script src="{% static 'js/scripts.min.js' %}"></script>
+    <script src="{% static 'js/main.min.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+  
+  </body>
+  
+  </html>
