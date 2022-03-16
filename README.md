@@ -6,5 +6,4 @@ This site was created to adapt the training centers to the online system.
 Website Rise was made for Leaders Academy. Site codes are open. Codes can be changed, distributed.
 Important codes in the settings can not be tapped, distributed, used !!! 
 
-
-Link: stark-lake-24323.herokuapp.com/
+Link: https://stark-lake-24323.herokuapp.com/
