@@ -1,8 +1,5 @@
 from django.shortcuts import render
 from .models import News, Events, Location, Contact
-from .forms import ContactForm
-import random
-from django.http import HttpResponseRedirect
 from django.views.generic import CreateView
 
 def home(request):
@@ -30,21 +27,6 @@ def events(request):
 def news(request):
     blogs = News.objects.all()
     return render(request,'news.html',{'blogs':blogs})
-
-# def contact(request):
-#     number = random.randint(1234567890, 1234567890123456789)
-#     saved = False
-#     if request.method == "POST":
-#         form = ContactForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return HttpResponseRedirect(f'/contact?saved={number}')
-
-#     else:
-#         form = ContactForm
-#         if f'saved{number}' in request.GET:
-#             saved = True
-#     return render(request,'contact.html',{'saved':saved,'form':form})
 
 def details(request, news_id):
     news = News.objects.get(pk=news_id)
