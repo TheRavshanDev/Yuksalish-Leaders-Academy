@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'YuksalishApp.apps.YuksalishappConfig',
     'cloudinary',
+    'admin_honeypot',
 ]
 
 MIDDLEWARE = [
